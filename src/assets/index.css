@@ -1,0 +1,24 @@
+/* src/assets/index.css */
+.container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type='text'] {
+    margin-right: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  hr {
+    margin: 20px 0;
+  }
+  .button {
+    margin-left: 10px;
+  }

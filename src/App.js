@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import AddTask from './components/AddTask';
+import ListTask from './components/ListTask';
+import EditTask from './components/EditTask'; // Import the EditTask component
 
-function App() {
+const App = () => {
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [editedTask, setEditedTask] = React.useState(null);
+
+  const handleEditTask = (task) => {
+    setEditedTask(task);
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setEditedTask(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>ToDo Application</h1>
+      <AddTask />
+      <hr />
+      <h2>Tasks</h2>
+      {isEditing && editedTask ? (
+        <EditTask task={editedTask} onSave={handleCancelEdit} onCancel={handleCancelEdit} />
+      ) : (
+        <ListTask onEditTask={handleEditTask} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
